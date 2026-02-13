@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour toi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #0f0f1a, #1a1a2e, #ff2e63, #ff6b81);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    overflow: hidden;
+    color: white;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 25px;
+    padding: 55px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    width: 320px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.msg {
+    margin-top: 15px;
+    min-height: 50px;
+    font-size: 18px;
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 32px;
+    font-size: 18px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(45deg, #ff2e63, #ff6b81);
+    box-shadow: 0 0 15px rgba(255, 46, 99, 0.6);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255, 46, 99, 1);
+}
+
+/* Cœurs flottants */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>J’ai une surprise pour toi ❤️</h1>
+
+    <div class="msg" id="message">Clique si tu oses… 😏</div>
+
+    <button class="btn" onclick="handleClick()">Cliquer 💌</button>
+</div>
+
+<script>
+let step = 0;
+
+// 👉 REMPLACE PAR TON LIEN GOOGLE SLIDES
+const slideLink = "https://docs.google.com/presentation/d/1sWptzTYyvYRxBLJ7mk0rqHIUNGyqZp11DPww-QafLkY/present";
+
+function handleClick() {
+    step++;
+
+    if (step === 1) {
+        document.getElementById("message").innerText = "T'es sûre tu veux cliquer ? 😳";
+    }
+    else if (step === 2) {
+        document.getElementById("message").innerText = "Grosse folle t'es sur ?(accent du sud) 😭";
+    }
+    else if (step === 3) {
+        document.getElementById("message").innerText = "Bon… j'ouvre 😌❤️";
+        setTimeout(() => {
+            window.location.href(slideLink, "_blank");
+        }, 900);
+    }
+}
+
+/* Générateur de cœurs */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    heart.style.fontSize = (14 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
