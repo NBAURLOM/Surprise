@@ -107,12 +107,12 @@ function handleClick() {
         document.getElementById("message").innerText = "T'es sûre tu veux cliquer ? 😳";
     }
     else if (step === 2) {
-        document.getElementById("message").innerText = "Grosse folle t'es sur ?(accent du sud) 😭";
+        document.getElementById("message").innerText = "Wsh cette folle veut vraiment cliquer ? 😭";
     }
     else if (step === 3) {
         document.getElementById("message").innerText = "Bon… j'ouvre 😌❤️";
         setTimeout(() => {
-            window.location.href(slideLink, "_blank");
+            window.open(slideLink, "_blank");
         }, 900);
     }
 }
